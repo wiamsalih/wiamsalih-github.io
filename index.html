@@ -81,16 +81,31 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: float 20s linear infinite;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.15) 0%,
+                rgba(255, 255, 255, 0.45) 25%,
+                rgba(255, 255, 255, 0.15) 50%,
+                rgba(255, 255, 255, 0.45) 75%,
+                rgba(255, 255, 255, 0.15) 100%
+            );
+            background-size: 400% 400%;
+            animation: wave 15s ease-in-out infinite;
+            opacity: 0.8;
         }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-50px, -50px); }
+        @keyframes wave {
+            0% { 
+                background-position: 0% 50%; 
+            }
+            50% { 
+                background-position: 100% 50%; 
+            }
+            100% { 
+                background-position: 0% 50%; 
+            }
         }
 
         .hero-content {
@@ -459,7 +474,7 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Wiam Salih</h1>
-            <p>Data Engineer | Cloud & Analytics Professional | AWS Certified</p>
+            <p> Data Engineer | Cloud & Analytics Professional</p>
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary">View My Work</a>
                 <a href="https://www.linkedin.com/in/wiam-salih/" target="_blank" class="btn btn-secondary">Connect With Me</a>
@@ -474,6 +489,10 @@
         </p>
         
         <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Software Development</h3>
+                <p>Java, Python, JavaScript, OOP</p>
+            </div>
             <div class="skill-card">
                 <h3>ETL & Data Pipelines</h3>
                 <p>AWS Glue, Lambda, Athena, Redshift</p>
