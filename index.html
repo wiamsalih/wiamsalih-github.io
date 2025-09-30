@@ -1,135 +1,720 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Portfolio</title>
-		<script src="jquery.min.js"></script>
-		<script src="jquery.scrollex.min.js"></script>
-		<script src="jquery.scrolly.min.js"></script>
-		<script src="browser.min.js"></script>
-		<script src="breakpoints.min.js"></script>
-		<script src="util.js"></script>
-		<script src="main.js"></script>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="main.css" />
-		<noscript><link rel="stylesheet" href="noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiam Salih | Data Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-		<!-- Wrapper -->
-		<div id="wrapper" class="fade-in">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-			<!-- Intro -->
-			<div id="intro">
-				<h1>Welcome to<br />
-				My Portfolio</h1>
-				<p>A brief showcase of my projects! &nbsp; <a href="https://twitter.com/ajlkn">&nbsp;</a></p>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-			<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="logo">Let's get started</a>
-			</header>
+        nav.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+        }
 
-			<!-- Nav -->
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="#intro">Introduction</a></li>
-					<li><a href="#projects">Projects</a></li> <!-- New "Projects" tab -->
-				</ul>
-			</nav>
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
 
-			<!-- Main -->
-			<div id="main">
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
 
-				<!-- Featured Post -->
-				<article class="post featured">
-					<header class="major">
-						<h2><a href="#">Hello, my name is<br />Wiam Salih!</a></h2>
-						<p>I am a senior at George Mason University, pursuing a Bachelor of Science in Information Technology with a concentration in Software Solutions. My passion for technology drives me to explore innovative solutions in programming, data analysis, and web development. With hands-on experience in Python, Java, SQL, and a strong command of tools like Power BI, Tableau, and Salesforce, I am constantly seeking opportunities to apply my technical skills to tackle real-world challenges. As a detail-oriented problem solver, I’m excited to contribute to impactful projects that make a difference in the tech world.</p>
-					</header>
-					<a href="#" class="image main"><img src="pic2.jpg" alt="Wiam Salih" /></a>
-					<ul class="actions special">
-						<li><a href="https://www.linkedin.com/in/wiam-salih-454069241/" class="button large" target="_blank">Learn More</a></li>
-					</ul>
-				</article>
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
 
-				<!-- Projects Section -->
-				<section id="projects" class="posts">
-					<article>
-						<header>
-							<h2><a href="#">Projects</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="pic91.jpeg" alt="nodes" width="400" height="300" /></a>
-						<p>These projects reflect my adaptability, curiosity, and broad skill set. From developing a financial chatbot using Python to managing databases and creating interactive dashboards, each project showcases my ability to learn new technologies and apply them to solve real-world problems.</p>
-						
-					</article>
-					<article>
-						<header>
-							<h2><a href="#">Palette Perfection Website</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="pic3.jpg" alt="Palette Perfection" width="300" height="200" /></a>
-						<p>Palette Perfection Website (Java) This Java-based application was developed for a paint company, Palette Perfection. The program calculates the total cost of a paint job based on various paint brands, which require different labor charges per hour. It dynamically incorporates customer details, calculates the number of gallons needed, labor costs, and any applicable discounts. The project demonstrates my ability to use Java for building interactive applications, managing data input/output, and applying business logic to provide tailored customer solutions.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/P5.java" class="button">Full Story</a></li>
-						</ul>
-					</article>
+        nav a:hover::after {
+            width: 100%;
+        }
 
-					<article>
-    						<header>
-        						<h2><a href="#">Financial ChatBot</a></h2>
-    						</header>
-    						<a href="#" class="image fit"><img src="pic8.jpeg" alt="chatbot" width="400" height="300" /></a>
-    						<p>This personal finance chatbot provides users with financial tips and answers to finance-related questions. 
-       						It leverages a pre-trained question-answering model to help users make informed decisions on budgeting, saving, and investing.</p>
-    						<ul class="actions special">
-        						<li><a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/finance-chatbot/FinBot.py" class="button" target="_blank">FinBot</a></li>
-        						<li><a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/requirements.txt" class="button">requirements.txt</a></li>
-   						 </ul>
-					</article>
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
 
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
 
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
 
-					<article>
-						<header>
-							<h2><a href="#">Data Analysis (SQL)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="pic4.jpg" alt="Data Analysis" width="400" height="300" /></a>
-						<p>In this project, I designed and managed a soccer league database using SQL. I created the soccer league database and set up tables for games, players, coaches, and teams, defining relationships and foreign keys where necessary. I populated the database with sample data and performed various analyses, such as counting games by city, listing players, and summarizing team and coach information. This work showcases my skills in database creation, data insertion, and query-based analysis.</p>
-						<ul class="actions special">
-							<li><a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/S4_A1_SALIH_WIAM.sql" class="button">Full Story</a></li>
-						</ul>
-					</article>
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
 
-					<article style="width: 1000px; margin: 0 auto; text-align: center;">
-						<header>
-							<h2><a href="#">Portfolio Management Dashboard</a></h2>
-						</header>
-						<a href="#" class="image fit"> <img src="pic5.jpg" alt="Portfolio Management Dashboard" width="800" height="700" /></a>
-						<p>This Tableau-based dashboard visualizes key portfolio metrics such as asset allocation, investment performance, and risk analysis. It allows users to explore data interactively, with real-time updates on portfolio trends. The dashboard includes tools for filtering by project and asset class, making it easy for users to track and analyze investment data to make informed financial decisions. </p>
-						<ul class="actions special" style="text-align: center;">
-							<li><a href="https://drive.google.com/uc?export=download&id=1K82K-Tf0lvsUIT9jIIX1hgTYWp4SwtBL" download>Download My Tableau Dashboard</a></li>
-						</ul>
-					</article>
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
 
-				</section>
-			</div>
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
 
-		</div>
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-		<!-- Scripts -->
-		<script src="jquery.min.js"></script>
-		<script src="jquery.scrollex.min.js"></script>
-		<script src="jquery.scrolly.min.js"></script>
-		<script src="browser.min.js"></script>
-		<script src="breakpoints.min.js"></script>
-		<script src="util.js"></script>
-		<script src="main.js"></script>
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
 
-	</body>
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .projects-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid #f0f0f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            flex: 1;
+            text-align: center;
+            padding: 0.75rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .project-links a:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .experience-section {
+            background: white;
+            border-radius: 20px;
+            padding: 4rem;
+            margin: 2rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #667eea;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-item h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .role {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-item li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .about-section, .projects-section, .experience-section {
+                padding: 2rem;
+                margin: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Wiam Salih</h1>
+            <p>Data Engineer | Cloud Solutions Architect | AWS Certified</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="https://www.linkedin.com/in/wiam-salih/" target="_blank" class="btn btn-secondary">Connect With Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <p style="font-size: 1.1rem; line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto;">
+            I'm a Data Engineer with hands-on experience architecting ETL pipelines, managing data warehouses, and delivering analytics solutions. Currently pursuing my Bachelor's in Information Technology at George Mason University, I specialize in building scalable cloud data systems using AWS, Python, and SQL.
+        </p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>ETL & Data Pipelines</h3>
+                <p>AWS Glue, Lambda, Athena, Redshift</p>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud Architecture</h3>
+                <p>AWS EC2, RDS, S3, Serverless</p>
+            </div>
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <p>Python, Java, SQL, JavaScript</p>
+            </div>
+            <div class="skill-card">
+                <h3>Data Visualization</h3>
+                <p>Tableau, Power BI, QuickSight</p>
+            </div>
+            <div class="skill-card">
+                <h3>Data Warehousing</h3>
+                <p>Snowflake, Redshift, Star Schema</p>
+            </div>
+            <div class="skill-card">
+                <h3>Big Data</h3>
+                <p>Hadoop, Spark</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Amazon Web Services (AWS)</h3>
+                <div class="role">Cloud Support Engineer Intern</div>
+                <div class="date">May 2025 – August 2025 | Seattle, WA</div>
+                <ul>
+                    <li>Architected and optimized ETL pipelines across EC2, RDS, Glue, Lambda, and S3</li>
+                    <li>Automated anomaly detection workflows with Python and SQL, cutting triage time by 10+ hours per week</li>
+                    <li>Reduced escalation tickets by 15% through production data process optimization</li>
+                    <li>Authored 10+ technical playbooks, reducing onboarding time by 30%</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>George Mason University</h3>
+                <div class="role">Technical Assistant - Cyber Security Engineering</div>
+                <div class="date">Aug 2024 – Present | Fairfax, VA</div>
+                <ul>
+                    <li>Enhanced SQL reporting systems improving performance and security</li>
+                    <li>Developed Java-based application improvements for non-technical users</li>
+                    <li>Delivered workshops on distributed systems and AI to 50+ participants</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Trinity College Dublin</h3>
+                <div class="role">Product Development Lead - LaunchBox Accelerator</div>
+                <div class="date">May 2023 – Jul 2023 | Dublin, Ireland</div>
+                <ul>
+                    <li>Directed 5-member team to deliver MVP analytics platform for pilot clients</li>
+                    <li>Built dashboards uncovering 15% conversion optimization opportunity</li>
+                    <li>Presented data insights to 20+ stakeholders, securing adoption and funding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <h2>Featured Projects</h2>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="cloud">Cloud & Data</button>
+            <button class="filter-btn" data-filter="ai">AI & ML</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card" data-category="cloud">
+                <div class="project-header">
+                    <h3>Skylar - Cloud Operations Analytics</h3>
+                    <div class="project-tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Lambda</span>
+                        <span class="tag">Redshift</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Serverless data engineering platform processing 10K+ daily log events. Features automated anomaly detection, star-schema modeling, and real-time QuickSight dashboards. Integrated NLP chatbot reduced incident investigation time by 40%.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/wiamsalih" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="cloud">
+                <div class="project-header">
+                    <h3>Retail Sales Analytics</h3>
+                    <div class="project-tags">
+                        <span class="tag">Snowflake</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">ETL</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Data warehouse with ETL workflows integrating sales, product, and customer data. Built SQL queries for segmentation and revenue trend analysis supporting strategic sales decisions.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/wiamsalih" target="_blank">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="ai">
+                <div class="project-header">
+                    <h3>AI-Driven Financial Chatbot</h3>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">SQL</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Intelligent chatbot providing financial advice using pre-trained question-answering models. Features Python + SQL ETL workflows and automated data refresh, saving 5+ hours monthly.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/finance-chatbot/FinBot.py" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <h3>Portfolio Management Dashboard</h3>
+                    <div class="project-tags">
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Data Viz</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Interactive Tableau dashboard visualizing portfolio metrics including asset allocation, performance tracking, and risk analysis. Features real-time updates and advanced filtering capabilities.</p>
+                    <div class="project-links">
+                        <a href="https://drive.google.com/uc?export=download&id=1K82K-Tf0lvsUIT9jIIX1hgTYWp4SwtBL" target="_blank">Download</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-header">
+                    <h3>Palette Perfection</h3>
+                    <div class="project-tags">
+                        <span class="tag">Java</span>
+                        <span class="tag">Business Logic</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Java application for paint company calculating total costs based on brand selection, labor charges, and customer details. Demonstrates OOP principles and business logic implementation.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/P5.java" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="cloud">
+                <div class="project-header">
+                    <h3>Soccer League Database</h3>
+                    <div class="project-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Database Design</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p>Comprehensive database system managing games, players, coaches, and teams. Features complex queries, relationship modeling, and data analysis capabilities.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/wiamsalih/wiamsalih-github.io/blob/main/S4_A1_SALIH_WIAM.sql" target="_blank">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Let's Connect</h2>
+        <p>I'm always open to discussing new opportunities and interesting projects.</p>
+        <div class="social-links">
+            <a href="mailto:wsalih2@gmu.edu" title="Email">✉️</a>
+            <a href="https://www.linkedin.com/in/wiam-salih/" target="_blank" title="LinkedIn">in</a>
+            <a href="https://github.com/wiamsalih" target="_blank" title="GitHub">🐙</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2025 Wiam Salih. Built with passion for data engineering.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Project filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
-
